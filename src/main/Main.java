@@ -14,6 +14,14 @@
 
 package main;
 
+import BusinessLogic.Loan_Application_Processor;
+import Entities.LoanProduct;
+import Entities.User;
+import Entities.UserLoanApplication;
+import LoanCategory.CarLoan;
+import LoanCategory.HomeLoan;
+import LoanCategory.PersonalLoan;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,7 +31,7 @@ public class Main {
     private static Scanner sc = new Scanner(System.in);
 
     private static Map<Integer, User> users = new HashMap<>();
-    private static Map<Integer, LoanApplication> allApplications = new HashMap<>();
+    private static Map<Integer, UserLoanApplication> allApplications = new HashMap<>();
 
     private static Loan_Application_Processor processor = new Loan_Application_Processor();
 
@@ -127,7 +135,7 @@ public class Main {
         System.out.print("Choose: ");
         String type = sc.nextLine().trim().toUpperCase();
 
-        Loan loan = null;
+        LoanProduct loan = null;
         double g_ask;
         switch (type) {
 
@@ -198,7 +206,7 @@ public class Main {
         }
 
         // Create loan application
-        LoanApplication app = new LoanApplication(loan, user, g_ask);
+        UserLoanApplication app = new UserLoanApplication(loan, user, g_ask);
         allApplications.put(app.getLaid(), app);
         user.addToHistory(app);
 
@@ -206,7 +214,7 @@ public class Main {
     }
 
     private static void viewHistory(User user) {
-        Map<Integer, LoanApplication> history = user.getApplicationHistory();
+        Map<Integer, UserLoanApplication> history = user.getApplicationHistory();
         if (history.isEmpty()) {
             System.out.println("No applications found.");
             return;
@@ -236,8 +244,8 @@ public class Main {
     private static void processAllPending() {
         System.out.println("Processing pending applications...");
 
-        for (LoanApplication app : allApplications.values()) {
-            if (app.getStatus() == LoanApplication.ApplicationStatus.PENDING) {
+        for (UserLoanApplication app : allApplications.values()) {
+            if (app.getStatus() == UserLoanApplication.ApplicationStatus.PENDING) {
                 processor.process(app);
                 System.out.println("Processed: " + app);
             }

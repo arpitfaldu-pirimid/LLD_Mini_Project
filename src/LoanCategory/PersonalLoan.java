@@ -14,7 +14,9 @@
 //implements loan
 //
 //ask_amount
-package main;
+package LoanCategory;
+
+import Entities.LoanProduct;
 
 public class PersonalLoan extends LoanProduct {
 

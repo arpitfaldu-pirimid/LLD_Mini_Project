@@ -1,15 +1,15 @@
 //Object of loan appllied by user
 
-package main;
+package Entities;
 
 import java.time.LocalDateTime;
 
-public class LoanApplication {
+public class UserLoanApplication {
 
     private static int counter = 1;
 
     private int laid;
-    private Loan loan;
+    private LoanProduct loan;
     private User user;
     private double amountRequested;
     private ApplicationStatus status;
@@ -19,7 +19,7 @@ public class LoanApplication {
         PENDING, APPROVED, REJECTED
     }
 
-    public LoanApplication(Loan loan, User user, double amountRequested) {
+    public UserLoanApplication(LoanProduct loan, User user, double amountRequested) {
         this.laid = counter++;
         this.loan = loan;
         this.user = user;
@@ -29,7 +29,7 @@ public class LoanApplication {
     }
 
     public int getLaid() { return laid; }
-    public Loan getLoan() { return loan; }
+    public LoanProduct getLoan() { return loan; }
     public User getUser() { return user; }
     public double getAmountRequested() { return amountRequested; }
     public ApplicationStatus getStatus() { return status; }

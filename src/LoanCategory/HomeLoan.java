@@ -24,7 +24,9 @@
 //current price of house
 //downpayment
 //ask_amount
-package main;
+package LoanCategory;
+
+import Entities.LoanProduct;
 
 public class HomeLoan extends LoanProduct {
 

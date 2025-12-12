@@ -1,4 +1,4 @@
-package main;
+package Entities;
 
 import java.util.*;
 
@@ -10,9 +10,9 @@ public class User {
     private int salary;
     private int creditScore;
 
-    private Map<Integer, LoanApplication> applicationHistory = new HashMap<>();
-    private List<LoanApplication> approvedLoans = new ArrayList<>();
-    private List<LoanApplication> rejectedLoans = new ArrayList<>();
+    private Map<Integer, UserLoanApplication> applicationHistory = new HashMap<>();
+    private List<UserLoanApplication> approvedLoans = new ArrayList<>();
+    private List<UserLoanApplication> rejectedLoans = new ArrayList<>();
 
     public User() {
         this.uid = counter++;
@@ -29,15 +29,15 @@ public class User {
         System.out.println("Your user id is " + this.uid);
     }
 
-    public void addToHistory(LoanApplication app) {
+    public void addToHistory(UserLoanApplication app) {
         applicationHistory.put(app.getLaid(), app);
     }
 
-    public void markApproved(LoanApplication app) {
+    public void markApproved(UserLoanApplication app) {
         approvedLoans.add(app);
     }
 
-    public void markRejected(LoanApplication app) {
+    public void markRejected(UserLoanApplication app) {
         rejectedLoans.add(app);
     }
 
@@ -46,9 +46,9 @@ public class User {
     public int getSalary() { return salary; }
     public int getCreditScore() { return creditScore; }
 
-    public Map<Integer, LoanApplication> getApplicationHistory() { return applicationHistory; }
-    public List<LoanApplication> getApprovedLoans() { return approvedLoans; }
-    public List<LoanApplication> getRejectedLoans() { return rejectedLoans; }
+    public Map<Integer, UserLoanApplication> getApplicationHistory() { return applicationHistory; }
+    public List<UserLoanApplication> getApprovedLoans() { return approvedLoans; }
+    public List<UserLoanApplication> getRejectedLoans() { return rejectedLoans; }
 
     @Override
     public String toString() {

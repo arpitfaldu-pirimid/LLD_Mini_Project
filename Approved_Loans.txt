@@ -1,2 +1,3 @@
 2025-12-11 23:03:11 | Standard Car Loan | Yash | 1000000.00 | APPROVED
 2025-12-12 11:03:43 | Home Loan | Arpit | 5000000.00 | APPROVED
+2025-12-12 13:27:37 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 2500000.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=4000000.0, downpayment=1500000.0, ask_amount=2500000.0} | APPROVED

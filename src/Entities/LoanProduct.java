@@ -1,6 +1,6 @@
-package main;
+package Entities;
 
-public abstract class LoanProduct implements Loan {
+public class LoanProduct{
     protected String loanName;
     protected double interestRate;
     protected String category;
@@ -13,10 +13,10 @@ public abstract class LoanProduct implements Loan {
         this.maxAmount = maxAmount;
     }
 
-    @Override public String getLoanName() { return loanName; }
-    @Override public double getInterestRate() { return interestRate; }
-    @Override public String getCategory() { return category; }
-    @Override public double getMaxAmount() { return maxAmount; }
+    public String getLoanName() { return loanName; }
+    public double getInterestRate() { return interestRate; }
+    public String getCategory() { return category; }
+    public double getMaxAmount() { return maxAmount; }
 
     @Override
     public String toString() {
