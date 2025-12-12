@@ -8,12 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
-public class Loan_Application_Processor {
+public class Loan_Application_Processor implements I_Loan_Application_Processor {
 
     private static final String APPROVED_FILE = "Approved_Loans.txt";
     private static final String REJECTED_FILE = "Rejected_Loans.txt";
 
-    // Main process method for approving or rejecting loan
     public void process(UserLoanApplication app) {
         User user = app.getUser();
         boolean approved = evaluate(app, user);
@@ -29,7 +28,7 @@ public class Loan_Application_Processor {
         }
     }
 
-    private boolean evaluate(UserLoanApplication app, User user) {
+    public boolean evaluate(UserLoanApplication app, User user) {
 
         LoanProduct loan = app.getLoan();
         String category = loan.getCategory();   // HOME / CAR / PERSONAL
@@ -39,20 +38,20 @@ public class Loan_Application_Processor {
         switch (category) {
 
             case "HOME":
-                return credit >= 700 && (salary*12*5) > app.getAmountRequested();
+                return credit >= 700 && (salary * 12 * 5) > app.getAmountRequested();
 
             case "CAR":
-                return credit >= 730 && (salary*12*3) > app.getAmountRequested();
+                return credit >= 730 && (salary * 12 * 3) > app.getAmountRequested();
 
             case "PERSONAL":
-                return credit >= 750 && (salary*12) > app.getAmountRequested();
+                return credit >= 750 && (salary * 12) > app.getAmountRequested();
 
             default:
                 return false;
         }
     }
 
-    private String formatEntry(UserLoanApplication app) {
+    public String formatEntry(UserLoanApplication app) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         return String.format("%s | %s | %s | %.2f | %.2f | %s | %.2f | %s | %s%n",
@@ -68,8 +67,7 @@ public class Loan_Application_Processor {
     }
 
 
-    // Writing in file
-    private void appendToFile(String filename, String entry) {
+    public void appendToFile(String filename, String entry) {
         try (FileWriter fw = new FileWriter(filename, true)) {
             fw.write(entry);
         } catch (IOException e) {

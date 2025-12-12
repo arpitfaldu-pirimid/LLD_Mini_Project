@@ -1,39 +1,14 @@
-//all functions
-//
-//apply for loan-> will add in users obj, and also add in queue of loan_application for executor to process for acceptance or rejection
-//
-//update user's info
-//
-//update/cancel loan application
-//
-//signup for user
-//
-//login for user
-//
-//history of loans
-
 package main;
 
-import BusinessLogic.Loan_Application_Processor;
-import Entities.LoanProduct;
 import Entities.User;
-import Entities.UserLoanApplication;
-import LoanCategory.CarLoan;
-import LoanCategory.HomeLoan;
-import LoanCategory.PersonalLoan;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
+
+import static main.Functions_for_main.*;
 
 public class Main {
 
-    private static Scanner sc = new Scanner(System.in);
-
-    private static Map<Integer, User> users = new HashMap<>();
-    private static Map<Integer, UserLoanApplication> allApplications = new HashMap<>();
-
-    private static Loan_Application_Processor processor = new Loan_Application_Processor();
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -97,160 +72,5 @@ public class Main {
                     System.out.println("Invalid choice.");
             }
         }
-    }
-
-    private static User signup() {
-        User u = new User();
-        u.signup();
-        users.put(u.getUid(), u);
-
-        System.out.println("Signup complete. Your UID: " + u.getUid());
-        return u;
-    }
-
-    private static User login() {
-        System.out.print("Enter UID: ");
-        String s = sc.nextLine().trim();
-
-        try {
-            int uid = Integer.parseInt(s);
-
-            if (users.containsKey(uid)) {
-                System.out.println("Login successful.");
-                return users.get(uid);
-            }
-
-            System.out.println("User not found. Please signup.");
-            return null;
-
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid UID.");
-            return null;
-        }
-    }
-
-    private static void applyLoan(User user) {
-
-        System.out.println("Available Loan Types: HOME, CAR, PERSONAL");
-        System.out.print("Choose: ");
-        String type = sc.nextLine().trim().toUpperCase();
-
-        LoanProduct loan = null;
-        double g_ask;
-        switch (type) {
-
-            case "HOME":
-
-                System.out.print("Enter area of house: ");
-                double area = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter current price of house: ");
-                double price = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter downpayment: ");
-                double down = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter request amount: ");
-                double ask = Double.parseDouble(sc.nextLine().trim());
-                g_ask=ask;
-                loan = new HomeLoan(
-                        "Home Loan",
-                        7.5,
-                        5000000,
-                        area,
-                        price,
-                        down,
-                        ask
-                );
-                break;
-
-            case "CAR":
-                System.out.print("Enter car model: ");
-                String model = sc.nextLine();
-
-                System.out.print("Enter current price of car: ");
-                double car_price = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter downpayment: ");
-                double car_down = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter request amount: ");
-                double car_ask = Double.parseDouble(sc.nextLine().trim());
-                g_ask=car_ask;
-                loan = new CarLoan(
-                        "Car Loan",
-                        9.0,
-                        2000000,
-                        model,
-                        car_price,
-                        car_down,
-                        car_ask
-                );
-                break;
-
-            case "PERSONAL":
-                System.out.print("Enter request amount: ");
-                double p_ask = Double.parseDouble(sc.nextLine().trim());
-                g_ask=p_ask;
-                loan = new PersonalLoan(
-                        "Personal Loan",
-                        12.5,
-                        500000,
-                        p_ask
-                );
-                break;
-
-            default:
-                System.out.println("Invalid loan type.");
-                return;
-        }
-
-        // Create loan application
-        UserLoanApplication app = new UserLoanApplication(loan, user, g_ask);
-        allApplications.put(app.getLaid(), app);
-        user.addToHistory(app);
-
-        System.out.println("Loan application created with ID: " + app.getLaid());
-    }
-
-    private static void viewHistory(User user) {
-        Map<Integer, UserLoanApplication> history = user.getApplicationHistory();
-        if (history.isEmpty()) {
-            System.out.println("No applications found.");
-            return;
-        }
-        System.out.println("\nYour Applications:");
-        history.values().forEach(System.out::println);
-    }
-
-    private static void viewApproved(User user) {
-        if (user.getApprovedLoans().isEmpty()) {
-            System.out.println("No approved loans.");
-            return;
-        }
-        System.out.println("\nApproved Loans:");
-        user.getApprovedLoans().forEach(System.out::println);
-    }
-
-    private static void viewRejected(User user) {
-        if (user.getRejectedLoans().isEmpty()) {
-            System.out.println("No rejected loans.");
-            return;
-        }
-        System.out.println("\nRejected Loans:");
-        user.getRejectedLoans().forEach(System.out::println);
-    }
-
-    private static void processAllPending() {
-        System.out.println("Processing pending applications...");
-
-        for (UserLoanApplication app : allApplications.values()) {
-            if (app.getStatus() == UserLoanApplication.ApplicationStatus.PENDING) {
-                processor.process(app);
-                System.out.println("Processed: " + app);
-            }
-        }
-
-        System.out.println("Processing complete.");
     }
 }

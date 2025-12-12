@@ -1,6 +1,6 @@
 package Entities;
 
-public class LoanProduct{
+public class LoanProduct {
     protected String loanName;
     protected double interestRate;
     protected String category;
@@ -13,10 +13,21 @@ public class LoanProduct{
         this.maxAmount = maxAmount;
     }
 
-    public String getLoanName() { return loanName; }
-    public double getInterestRate() { return interestRate; }
-    public String getCategory() { return category; }
-    public double getMaxAmount() { return maxAmount; }
+    public String getLoanName() {
+        return loanName;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public double getMaxAmount() {
+        return maxAmount;
+    }
 
     @Override
     public String toString() {

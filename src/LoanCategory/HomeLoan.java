@@ -1,39 +1,13 @@
-////implements loan
-////
-////area of house
-////current price of house
-////downpayment
-////ask_amount
-//package main;
-//
-//public class HomeLoan {
-//
-//    private double area_of_house;
-//    private double current_price_of_house;
-//    private double downpayment;
-//    private double ask_amount;
-//
-//    public HomeLoan(String standardHomeLoan, double v, int i) {
-//    }
-//}
-
-
-//implements loan
-//
-//area of house
-//current price of house
-//downpayment
-//ask_amount
 package LoanCategory;
 
 import Entities.LoanProduct;
 
 public class HomeLoan extends LoanProduct {
 
-    private double area_of_house;
-    private double current_price_of_house;
-    private double downpayment;
-    private double ask_amount;
+    private final double area_of_house;
+    private final double current_price_of_house;
+    private final double downpayment;
+    private final double ask_amount;
 
     public HomeLoan(String loanName,
                     double interestRate,
@@ -51,18 +25,26 @@ public class HomeLoan extends LoanProduct {
         this.ask_amount = ask_amount;
     }
 
-    public double getArea_of_house() { return area_of_house; }
-    public double getCurrent_price_of_house() { return current_price_of_house; }
-    public double getDownpayment() { return downpayment; }
-    public double getAsk_amount() { return ask_amount; }
+    public double getArea_of_house() {
+        return area_of_house;
+    }
+
+    public double getCurrent_price_of_house() {
+        return current_price_of_house;
+    }
+
+    public double getDownpayment() {
+        return downpayment;
+    }
+
+    public double getAsk_amount() {
+        return ask_amount;
+    }
 
     @Override
     public String toString() {
         return "HomeLoan{" +
-//                "loanName='" + loanName + '\'' +
-//                ", interestRate=" + interestRate +
                 ", category='" + category + '\'' +
-//                ", maxAmount=" + maxAmount +
                 ", area_of_house=" + area_of_house +
                 ", current_price_of_house=" + current_price_of_house +
                 ", downpayment=" + downpayment +

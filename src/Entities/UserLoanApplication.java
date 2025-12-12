@@ -1,5 +1,3 @@
-//Object of loan appllied by user
-
 package Entities;
 
 import java.time.LocalDateTime;
@@ -8,12 +6,12 @@ public class UserLoanApplication {
 
     private static int counter = 1;
 
-    private int laid;
-    private LoanProduct loan;
-    private User user;
-    private double amountRequested;
+    private final int laid;
+    private final LoanProduct loan;
+    private final User user;
+    private final double amountRequested;
     private ApplicationStatus status;
-    private LocalDateTime timestamp;
+    private final LocalDateTime timestamp;
 
     public enum ApplicationStatus {
         PENDING, APPROVED, REJECTED
@@ -28,14 +26,33 @@ public class UserLoanApplication {
         this.timestamp = LocalDateTime.now();
     }
 
-    public int getLaid() { return laid; }
-    public LoanProduct getLoan() { return loan; }
-    public User getUser() { return user; }
-    public double getAmountRequested() { return amountRequested; }
-    public ApplicationStatus getStatus() { return status; }
-    public LocalDateTime getTimestamp() { return timestamp; }
+    public int getLaid() {
+        return laid;
+    }
 
-    public void setStatus(ApplicationStatus status) { this.status = status; }
+    public LoanProduct getLoan() {
+        return loan;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public double getAmountRequested() {
+        return amountRequested;
+    }
+
+    public ApplicationStatus getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setStatus(ApplicationStatus status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {

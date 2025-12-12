@@ -1,26 +1,10 @@
-////implements loan
-////
-////ask_amount
-//package main;
-//
-//public class PersonalLoan {
-//
-//    private int ask_amount;
-//
-//}
-
-
-
-//implements loan
-//
-//ask_amount
 package LoanCategory;
 
 import Entities.LoanProduct;
 
 public class PersonalLoan extends LoanProduct {
 
-    private double ask_amount;
+    private final double ask_amount;
 
     public PersonalLoan(String loanName,
                         double interestRate,
@@ -32,15 +16,14 @@ public class PersonalLoan extends LoanProduct {
         this.ask_amount = ask_amount;
     }
 
-    public double getAsk_amount() { return ask_amount; }
+    public double getAsk_amount() {
+        return ask_amount;
+    }
 
     @Override
     public String toString() {
         return "PersonalLoan{" +
-//                "loanName='" + loanName + '\'' +
-//                ", interestRate=" + interestRate +
                 ", category='" + category + '\'' +
-//                ", maxAmount=" + maxAmount +
                 ", ask_amount=" + ask_amount +
                 '}';
     }
