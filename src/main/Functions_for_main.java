@@ -49,7 +49,7 @@ public class Functions_for_main {
         }
     }
 
-    static void applyLoan(User user) {
+    static void applyLoan(User user) throws InterruptedException {
 
         System.out.println("Available Loan Types: HOME, CAR, PERSONAL");
         System.out.print("Choose: ");
@@ -127,7 +127,6 @@ public class Functions_for_main {
         UserLoanApplication app = new UserLoanApplication(loan, user, g_ask);
         allApplications.put(app.getLaid(), app);
         user.addToHistory(app);
-
         System.out.println("Loan application created with ID: " + app.getLaid());
     }
 
@@ -161,14 +160,69 @@ public class Functions_for_main {
 
     static void processAllPending() {
         System.out.println("Processing pending applications...");
-
         for (UserLoanApplication app : allApplications.values()) {
             if (app.getStatus() == UserLoanApplication.ApplicationStatus.PENDING) {
                 processor.process(app);
                 System.out.println("Processed: " + app);
             }
         }
-
         System.out.println("Processing complete.");
     }
+
+    public static void concurrentLoanApplyTest(){
+
+        users.clear();
+        allApplications.clear();
+
+        User u1=new User("Arpit",50000,765);
+        User u2=new User("Yash",55000,742);
+
+        users.put(u1.getUid(),u1);
+        users.put(u2.getUid(),u2);
+
+        System.out.println("Users created statically");
+        System.out.println(u1);
+        System.out.println(u2);
+
+        Thread t1=new Thread(()->{
+            applyHomeLoanConcurrently(u1);
+        });
+
+        Thread t2=new Thread(()->{
+            applyHomeLoanConcurrently(u2);
+        });
+
+        t1.start();
+        t2.start();
+
+        try{
+            t1.join();
+            t2.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();;
+        }
+
+        System.out.println("All applications:-");
+        allApplications.values().forEach(System.out::println);
+    }
+
+    private static synchronized void applyHomeLoanConcurrently(User user){
+
+        String loanName="Home Loan";
+        double interestRate=7.5;
+        double maxAmount=5000000;
+        double area=1500;
+        double currentprice=6500000;
+        double downpayment=3500000;
+        double askamount=3000000;
+
+        LoanProduct loan=new HomeLoan(loanName,interestRate,maxAmount,area,currentprice,downpayment,askamount);
+        UserLoanApplication app=new UserLoanApplication(loan,user,askamount);
+        allApplications.put(app.getLaid(),app);
+        user.addToHistory(app);
+
+        System.out.println("Thread: "+  Thread.currentThread().getName()+ " |User: "+user.getName()+ " |Application ID: "+app.getLaid());
+    }
+
+
 }

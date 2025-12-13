@@ -18,6 +18,13 @@ public class User {
         this.uid = counter++;
     }
 
+    public User(String name, int salary, int creditScore) {
+        this.uid = counter++;
+        this.name=name;
+        this.salary=salary;
+        this.creditScore=creditScore;
+    }
+
     public void signup() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter your name: ");

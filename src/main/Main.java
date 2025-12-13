@@ -10,7 +10,7 @@ public class Main {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         System.out.println("Loan Processing CLI (Synchronous Demo)");
 
@@ -25,7 +25,8 @@ public class Main {
             System.out.println("5. View Approved Loans");
             System.out.println("6. View Rejected Loans");
             System.out.println("7. Process Pending Loans (Admin)");
-            System.out.println("8. Exit");
+            System.out.println("8. Testing by applying 2 loans concurrently");
+            System.out.println("9. Exit");
             System.out.print("Choose: ");
 
             String choice = sc.nextLine().trim();
@@ -65,6 +66,10 @@ public class Main {
                     break;
 
                 case "8":
+                    concurrentLoanApplyTest();
+                    return;
+
+                case "9":
                     System.out.println("Thank you for using our system!!!");
                     return;
 
