@@ -6,9 +6,9 @@ public class User {
 
     private static int counter = 1;
     private final int uid;
-    private String name;
-    private int salary;
-    private int creditScore;
+    String name;
+    int salary;
+    int creditScore;
 
     private final Map<Integer, UserLoanApplication> applicationHistory = new HashMap<>();
     private final List<UserLoanApplication> approvedLoans = new ArrayList<>();

@@ -26,7 +26,7 @@ public class Loan_Application_Processor implements I_Loan_Application_Processor 
         }
     }
 
-    public boolean evaluate(UserLoanApplication app, User user) {
+    private boolean evaluate(UserLoanApplication app, User user) {
 
         LoanProduct loan = app.getLoan();
         String category = loan.getCategory();   // HOME / CAR / PERSONAL
