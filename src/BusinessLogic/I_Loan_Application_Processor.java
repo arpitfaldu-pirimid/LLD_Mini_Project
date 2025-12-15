@@ -7,7 +7,9 @@ public interface I_Loan_Application_Processor {
 
     void process(UserLoanApplication app);
 
-    boolean evaluate(UserLoanApplication app, User user);
+    private boolean evaluate(UserLoanApplication app, User user) {
+        return false;
+    }
 
     String formatEntry(UserLoanApplication app);
 
