@@ -49,7 +49,7 @@ public class Functions_for_main {
         }
     }
 
-    static void applyLoan(User user) throws InterruptedException {
+    static synchronized void applyLoan(User user) throws InterruptedException {
 
         System.out.println("Available Loan Types: HOME, CAR, PERSONAL");
         System.out.print("Choose: ");
