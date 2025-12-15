@@ -175,9 +175,4 @@ public class Functions_for_main {
         concurrentLoanApplyTestDemo(users, allApplications, processor);
     }
 
-    private static synchronized void applyHomeLoanConcurrently(User user){
-
-
-    }
-
 }
