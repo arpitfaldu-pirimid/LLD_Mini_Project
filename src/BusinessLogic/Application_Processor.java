@@ -3,7 +3,7 @@ package BusinessLogic;
 import Entities.User;
 import Entities.UserLoanApplication;
 
-public interface I_Loan_Application_Processor {
+public interface Application_Processor {
 
     void process(UserLoanApplication app);
 

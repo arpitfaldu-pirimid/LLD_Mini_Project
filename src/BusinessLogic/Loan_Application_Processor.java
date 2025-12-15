@@ -6,7 +6,7 @@ import Entities.UserLoanApplication;
 import static BusinessLogic.FileOp_FormatOp.FileWriterOp;
 import static BusinessLogic.FileOp_FormatOp.Formator;
 
-public class Loan_Application_Processor implements I_Loan_Application_Processor {
+public class Loan_Application_Processor implements Application_Processor {
 
     private static final String APPROVED_FILE = "Approved_Loans.txt";
     private static final String REJECTED_FILE = "Rejected_Loans.txt";
