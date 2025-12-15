@@ -3,10 +3,8 @@ package BusinessLogic;
 import Entities.LoanProduct;
 import Entities.User;
 import Entities.UserLoanApplication;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.format.DateTimeFormatter;
+import static BusinessLogic.FileOp_FormatOp.FileWriterOp;
+import static BusinessLogic.FileOp_FormatOp.Formator;
 
 public class Loan_Application_Processor implements I_Loan_Application_Processor {
 
@@ -52,26 +50,11 @@ public class Loan_Application_Processor implements I_Loan_Application_Processor 
     }
 
     public String formatEntry(UserLoanApplication app) {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        return String.format("%s | %s | %s | %.2f | %.2f | %s | %.2f | %s | %s%n",
-                app.getTimestamp().format(fmt),            // %s
-                app.getLoan().getLoanName(),               // %s
-                app.getLoan().getCategory(),               // %s
-                app.getLoan().getInterestRate(),           // %.2f
-                app.getLoan().getMaxAmount(),              // %.2f
-                app.getUser().getName(),                   // %s
-                app.getAmountRequested(),                  // %.2f
-                app.getLoan().toString(),                  // %s
-                app.getStatus().name());                   // %s
+        return Formator(app);
     }
 
 
     public void appendToFile(String filename, String entry) {
-        try (FileWriter fw = new FileWriter(filename, true)) {
-            fw.write(entry);
-        } catch (IOException e) {
-            System.err.println("Failed to write to " + filename + ": " + e.getMessage());
-        }
+        FileWriterOp(filename,entry);
     }
 }
