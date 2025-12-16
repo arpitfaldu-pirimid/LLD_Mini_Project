@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import static LoanCategory.CarLoan.applyCarLoan;
+import static LoanCategory.HomeLoan.applyHomeLoan;
+import static LoanCategory.PersonalLoan.applyPersonalLoan;
 import static main.Demo_Multi_Threading.concurrentLoanApplyTestDemo;
 
 public class Functions_for_main {
@@ -62,64 +65,15 @@ public class Functions_for_main {
         switch (type) {
 
             case "HOME":
-
-                System.out.print("Enter area of house: ");
-                double area_of_house = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter current price of house: ");
-                double current_price_of_house = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter downpayment: ");
-                double downpayment_of_house = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter request amount: ");
-                double ask_amount_house = Double.parseDouble(sc.nextLine().trim());
-                g_ask = ask_amount_house;
-                loan = new HomeLoan(
-                        "Home Loan",
-                        7.5,
-                        5000000,
-                        area_of_house,
-                        current_price_of_house,
-                        downpayment_of_house,
-                        ask_amount_house
-                );
+                loan=applyHomeLoan(g_ask);
                 break;
 
             case "CAR":
-                System.out.print("Enter car model: ");
-                String model = sc.nextLine();
-
-                System.out.print("Enter current price of car: ");
-                double current_price_of_car = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter downpayment: ");
-                double downpayment_car = Double.parseDouble(sc.nextLine().trim());
-
-                System.out.print("Enter request amount: ");
-                double ask_amount_car = Double.parseDouble(sc.nextLine().trim());
-                g_ask = ask_amount_car;
-                loan = new CarLoan(
-                        "Car Loan",
-                        9.0,
-                        2000000,
-                        model,
-                        current_price_of_car,
-                        downpayment_car,
-                        ask_amount_car
-                );
+                loan=applyCarLoan(g_ask);
                 break;
 
             case "PERSONAL":
-                System.out.print("Enter request amount: ");
-                double ask_amount_personal = Double.parseDouble(sc.nextLine().trim());
-                g_ask = ask_amount_personal;
-                loan = new PersonalLoan(
-                        "Personal Loan",
-                        12.5,
-                        500000,
-                        ask_amount_personal
-                );
+                loan=applyPersonalLoan(g_ask);
                 break;
 
             default:

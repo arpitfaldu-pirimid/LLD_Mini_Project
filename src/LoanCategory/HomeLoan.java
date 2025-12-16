@@ -1,6 +1,9 @@
 package LoanCategory;
 
 import Entities.LoanProduct;
+import Entities.UserLoanApplication;
+
+import java.util.Scanner;
 
 public class HomeLoan extends LoanProduct {
 
@@ -39,6 +42,32 @@ public class HomeLoan extends LoanProduct {
 
     public double getAsk_amount() {
         return ask_amount;
+    }
+    public static LoanProduct applyHomeLoan(double g_ask){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter area of house: ");
+        double area_of_house = Double.parseDouble(sc.nextLine().trim());
+
+        System.out.print("Enter current price of house: ");
+        double current_price_of_house = Double.parseDouble(sc.nextLine().trim());
+
+        System.out.print("Enter downpayment: ");
+        double downpayment_of_house = Double.parseDouble(sc.nextLine().trim());
+
+        System.out.print("Enter request amount: ");
+        double ask_amount_house = Double.parseDouble(sc.nextLine().trim());
+        g_ask = ask_amount_house;
+        LoanProduct loan = null;
+        loan = new HomeLoan(
+                "Home Loan",
+                7.5,
+                5000000,
+                area_of_house,
+                current_price_of_house,
+                downpayment_of_house,
+                ask_amount_house
+        );
+        return loan;
     }
 
     @Override

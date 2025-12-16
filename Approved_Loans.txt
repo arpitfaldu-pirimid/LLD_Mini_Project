@@ -4,3 +4,5 @@
 2025-12-12 15:57:48 | Car Loan | CAR | 9.00 | 2000000.00 | Arpit | 700000.00 | CarLoan{, category='CAR', car_model='Verna', current_price_of_car=1000000.0, downpayment=300000.0, ask_amount=700000.0} | APPROVED
 2025-12-12 16:50:17 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 2000000.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=5500000.0, downpayment=3500000.0, ask_amount=2000000.0} | APPROVED
 2025-12-12 18:53:40 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 3000000.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=5500000.0, downpayment=2500000.0, ask_amount=3000000.0} | APPROVED
+2025-12-16 10:08:35 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 2500000.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=5500000.0, downpayment=3000000.0, ask_amount=2500000.0} | APPROVED
+2025-12-16 10:43:42 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 0.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=5500000.0, downpayment=3000000.0, ask_amount=2500000.0} | APPROVED
