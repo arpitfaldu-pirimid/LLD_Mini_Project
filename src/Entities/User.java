@@ -10,11 +10,14 @@ public class User {
     int salary;
     int creditScore;
 
-    private final Map<Integer, UserLoanApplication> applicationHistory = new HashMap<>();
-    private final List<UserLoanApplication> approvedLoans = new ArrayList<>();
-    private final List<UserLoanApplication> rejectedLoans = new ArrayList<>();
+    private final Map<Integer, UserLoanApplication> applicationHistory;
+    private final List<UserLoanApplication> approvedLoans;
+    private final List<UserLoanApplication> rejectedLoans;
 
     public User() {
+        this.approvedLoans = new ArrayList<>();
+        this.rejectedLoans = new ArrayList<>();
+        this.applicationHistory = new HashMap<>();
         this.uid = counter++;
     }
 
@@ -23,6 +26,9 @@ public class User {
         this.name=name;
         this.salary=salary;
         this.creditScore=creditScore;
+        this.applicationHistory=getApplicationHistory();
+        this.approvedLoans=getApprovedLoans();
+        this.rejectedLoans=getRejectedLoans();
     }
 
     public void signup() {
