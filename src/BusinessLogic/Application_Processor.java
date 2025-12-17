@@ -11,8 +11,4 @@ public interface Application_Processor {
         return false;
     }
 
-    String formatEntry(UserLoanApplication app);
-
-    void appendToFile(String filename, String entry);
-
 }

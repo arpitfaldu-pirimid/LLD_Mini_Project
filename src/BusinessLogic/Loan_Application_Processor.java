@@ -16,13 +16,13 @@ public class Loan_Application_Processor implements Application_Processor {
         boolean approved = evaluate(app, user);
 
         if (approved) {
-            app.setStatus(UserLoanApplication.ApplicationStatus.APPROVED);
+            app.setStatus(app.getApplicationStatus().APPROVED);
             user.markApproved(app);
-            appendToFile(APPROVED_FILE, formatEntry(app));
+            FileWriterOp(APPROVED_FILE, Formator(app));
         } else {
-            app.setStatus(UserLoanApplication.ApplicationStatus.REJECTED);
+            app.setStatus(app.getApplicationStatus().REJECTED);
             user.markRejected(app);
-            appendToFile(REJECTED_FILE, formatEntry(app));
+            FileWriterOp(REJECTED_FILE, Formator(app));
         }
     }
 
@@ -47,14 +47,5 @@ public class Loan_Application_Processor implements Application_Processor {
             default:
                 return false;
         }
-    }
-
-    public String formatEntry(UserLoanApplication app) {
-        return Formator(app);
-    }
-
-
-    public void appendToFile(String filename, String entry) {
-        FileWriterOp(filename,entry);
     }
 }

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import static Auth.SignUpService.SignUpAuth;
 import static LoanCategory.CarLoan.applyCarLoan;
 import static LoanCategory.HomeLoan.applyHomeLoan;
 import static LoanCategory.PersonalLoan.applyPersonalLoan;
@@ -25,12 +26,8 @@ public class Functions_for_main {
     private static final Loan_Application_Processor processor = new Loan_Application_Processor();
 
     static User signup() {
-        User u = new User();
-        u.signup();
-        users.put(u.getUid(), u);
-
-        System.out.println("Signup complete. Your UID: " + u.getUid());
-        return u;
+        User user=SignUpAuth(users);
+        return user;
     }
 
     static User login() {
@@ -117,7 +114,7 @@ public class Functions_for_main {
     static void processAllPending() {
         System.out.println("Processing pending applications...");
         for (UserLoanApplication app : allApplications.values()) {
-            if (app.getStatus() == UserLoanApplication.ApplicationStatus.PENDING) {
+            if (app.getStatus() == app.getApplicationStatus()) {
                 processor.process(app);
                 System.out.println("Processed: " + app);
             }

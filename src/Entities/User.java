@@ -6,9 +6,9 @@ public class User {
 
     private static int counter = 1;
     private final int uid;
-    String name;
-    int salary;
-    int creditScore;
+    public String name;
+    public int salary;
+    public int creditScore;
 
     private final Map<Integer, UserLoanApplication> applicationHistory;
     private final List<UserLoanApplication> approvedLoans;
@@ -29,17 +29,6 @@ public class User {
         this.applicationHistory=getApplicationHistory();
         this.approvedLoans=getApprovedLoans();
         this.rejectedLoans=getRejectedLoans();
-    }
-
-    public void signup() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter your name: ");
-        this.name = sc.nextLine();
-        System.out.print("Enter your Salary: ");
-        this.salary = sc.nextInt();
-        System.out.print("Enter your credit score: ");
-        this.creditScore = sc.nextInt();
-        System.out.println("Your user id is " + this.uid);
     }
 
     public void addToHistory(UserLoanApplication app) {

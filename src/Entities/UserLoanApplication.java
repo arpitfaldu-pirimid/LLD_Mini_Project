@@ -1,5 +1,6 @@
 package Entities;
 
+import Enums.ApplicationStatus;
 import java.time.LocalDateTime;
 
 public class UserLoanApplication {
@@ -12,10 +13,8 @@ public class UserLoanApplication {
     private final double amountRequested;
     private ApplicationStatus status;
     private final LocalDateTime timestamp;
+    private ApplicationStatus applicationStatus;
 
-    public enum ApplicationStatus {
-        PENDING, APPROVED, REJECTED
-    }
 
     public UserLoanApplication(LoanProduct loan, User user, double amountRequested) {
         this.laid = counter++;
@@ -36,6 +35,10 @@ public class UserLoanApplication {
 
     public User getUser() {
         return user;
+    }
+
+    public ApplicationStatus getApplicationStatus() {
+        return applicationStatus;
     }
 
     public double getAmountRequested() {
