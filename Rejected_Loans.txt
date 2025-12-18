@@ -1,0 +1,4 @@
+2025-12-11 22:50:05 | Standard Home Loan | Arpit | 4000000.00 | REJECTED
+2025-12-11 23:02:22 | Standard Home Loan | Arpit | 4000000.00 | REJECTED
+2025-12-12 13:23:31 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 4500000.00 | HomeLoan{, category='HOME', area_of_house=2000.0, current_price_of_house=6500000.0, downpayment=2000000.0, ask_amount=4500000.0} | REJECTED
+2025-12-12 13:26:17 | Home Loan | HOME | 7.50 | 5000000.00 | Arpit | 3000000.00 | HomeLoan{, category='HOME', area_of_house=1500.0, current_price_of_house=5000000.0, downpayment=2000000.0, ask_amount=3000000.0} | REJECTED
